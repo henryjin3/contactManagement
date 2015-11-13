@@ -1,18 +1,19 @@
 const {AppBar} = mui;
+const {List} = mui;
 
 // App component - represents the whole app
 App = React.createClass({
-  getTasks() {
+  getContacts() {
     return [
-      { _id: 1, text: "This is task 1" },
-      { _id: 2, text: "This is task 2" },
-      { _id: 3, text: "This is task 3" }
+      { _id: 1, text: "Contact 1" },
+      { _id: 2, text: "Contact 2" },
+      { _id: 3, text: "Contact 3" }
     ];
   },
 
-  renderTasks() {
-    return this.getTasks().map((task) => {
-      return <Task key={task._id} task={task} />;
+  renderContacts() {
+    return this.getContacts().map((contact) => {
+      return <Contact key={contact._id} contact={contact} />;
     });
   },
 
@@ -20,9 +21,9 @@ App = React.createClass({
     return (
       <div className="app">
         <AppBar title="Contacts"/>
-        <ul>
-          {this.renderTasks()}
-        </ul>
+        <List subheader="All">
+          {this.renderContacts()}
+        </List>
       </div>
     );
   }
