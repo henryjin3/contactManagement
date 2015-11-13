@@ -1,18 +1,18 @@
 const {AppBar} = mui;
-const {List} = mui;
 
 // App component - represents the whole app
 App = React.createClass({
-  getContacts() {
-    return [
-      { _id: 1, text: "Contact 1" },
-      { _id: 2, text: "Contact 2" },
-      { _id: 3, text: "Contact 3" }
-    ];
+
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {
+      contacts: Contacts.find({}).fetch()
+    }
   },
 
   renderContacts() {
-    return this.getContacts().map((contact) => {
+    return this.data.contacts.map((contact) => {
       return <Contact key={contact._id} contact={contact} />;
     });
   },
@@ -21,9 +21,7 @@ App = React.createClass({
     return (
       <div className="app">
         <AppBar title="Contacts"/>
-        <List subheader="All">
-          {this.renderContacts()}
-        </List>
+        {this.props.children}
       </div>
     );
   }

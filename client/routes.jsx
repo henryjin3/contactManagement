@@ -8,6 +8,8 @@ const createHistory = ReactRouter.history.createHistory;
 
 const routes = (
   <Route path="/" component={App}>
+    <Route path="add" component={AddContact} />
+    <IndexRoute component={ContactList} />
   </Route>
 );
 
