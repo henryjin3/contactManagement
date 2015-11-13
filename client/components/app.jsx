@@ -1,3 +1,5 @@
+const {AppBar} = mui;
+
 // App component - represents the whole app
 App = React.createClass({
   getTasks() {
@@ -16,11 +18,8 @@ App = React.createClass({
 
   render() {
     return (
-      <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
-
+      <div className="app">
+        <AppBar title="Contacts"/>
         <ul>
           {this.renderTasks()}
         </ul>
